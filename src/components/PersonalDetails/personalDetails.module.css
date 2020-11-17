@@ -1,0 +1,15 @@
+.PersonalDetails {
+  display: flex;
+  text-align: center;
+  margin: 1rem;
+  margin-top: -1rem;
+  font-family: 'Courier New', Courier, monospace;
+}
+
+.Box {
+    margin: 1rem;
+    padding: 1rem;
+    box-shadow: 0 1px 5px;
+    min-height: calc(100vh - 2rem - 100px);
+    width: calc(100vw / 2);
+  }

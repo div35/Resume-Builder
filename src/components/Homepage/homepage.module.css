@@ -1,0 +1,27 @@
+.home{
+    text-align: center;
+    font-family: cursive;
+    font-size: 1.5rem;
+}
+
+.button{
+    text-decoration: none;
+    color: white;
+    border-radius: 2rem;
+    background-color: rgb(63, 139, 63);
+    padding: 20px;
+    font-size: 1.1rem;
+    border: 2px solid rgb(63, 139, 63);
+
+}
+
+.button:hover{
+    color: rgb(63, 139, 63);
+    background-color: white;
+}
+
+.logo{
+    height: 20rem;
+    width: 33rem;
+    margin-left: 28rem;
+}

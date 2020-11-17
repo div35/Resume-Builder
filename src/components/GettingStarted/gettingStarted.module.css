@@ -1,0 +1,55 @@
+.home{
+    text-align: center;
+    font-family: cursive;
+    font-size: 1.5rem;
+}
+
+.templates{
+    display: flex;
+    margin-left: 10rem;
+    margin-right: 10rem;
+}
+
+.temp1{
+    background-image: url("./../../Images/temp1.png");
+}
+
+.temp2{
+    background-image: url("./../../Images/temp2.png");
+}
+
+.temp3{
+    background-image: url("./../../Images/temp3.png");
+}
+
+.temp4{
+    background-image: url("./../../Images/temp4.png"); 
+}
+
+.temp{
+    height: 14.3rem;
+    width: 11rem;
+    margin: 3rem;
+    background-size: contain;
+    border: solid;
+    background-repeat: no-repeat;
+}
+
+.temp:hover{
+    height: 17rem;
+    width: 13rem;
+    margin-left: 1rem;
+}
+
+.btn{
+    padding: 0.6rem;
+    color: white;
+    background-color: rgb(38, 156, 101);
+    border-radius: 1rem;
+}
+
+.btn:hover{
+    color: rgb(38, 156, 101);
+    background-color: white;
+    font-size: 1rem;
+}

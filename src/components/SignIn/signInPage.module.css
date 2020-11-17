@@ -1,0 +1,7 @@
+.Box {
+    margin-left: calc(100vw / 3);
+    padding: 1rem;
+    box-shadow: 0 1px 5px;
+    width: calc(100vw / 3);
+    text-align: center;
+  }

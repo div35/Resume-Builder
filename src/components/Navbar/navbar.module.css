@@ -1,0 +1,38 @@
+.navbar{
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    background-color: rgb(243, 241, 241);
+    position: fixed;
+    box-shadow: 0 1px 5px;
+}
+
+.part2{
+    display: flex;
+    list-style: none;
+    margin: 1.1rem;
+    font-size: 17px;
+}
+
+.nav{
+    margin-left: 1.5rem;
+    text-decoration: none;
+    color: black;
+    margin-right: 1.5rem;
+}
+
+.register{
+    border: 2px solid green;
+    padding: 8px;
+    margin-top: -8px;
+    border-radius: 10px;
+}
+
+.register:hover{
+    color:green;
+    background-color:white;
+}
+
+.signin{
+    color: green;
+}
