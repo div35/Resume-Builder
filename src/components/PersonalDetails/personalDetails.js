@@ -7,7 +7,9 @@ class PersonalDetails extends Component {
         return (
             <div className={classes.PersonalDetails}>
                 <Form />
-                <div className={`${classes.Result} ${classes.Box}`}></div>
+                <div className={`${classes.Result} ${classes.Box}`}>
+                    
+                </div>
             </div>
         )
     }

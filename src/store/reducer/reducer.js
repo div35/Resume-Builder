@@ -1,7 +1,7 @@
 import * as actionType from "./../action/actionTypes"
 
 const initialState = {
-    template : "",
+    template: "",
     personalDetails: {
         firstName: "",
         lastName: "",
@@ -15,13 +15,14 @@ const initialState = {
         country: "",
         pinCode: ""
     },
+
     educationDetails: {
-        college:"",
-        degree:"",
-        cgpa:"",
-        city:"",
-        month:"",
-        year:""
+        college: "",
+        degree: "",
+        cgpa: "",
+        collegeCity: "",
+        month: "",
+        year: ""
     }
 }
 
@@ -32,6 +33,25 @@ const reducer = (state = initialState, action) => {
                 ...state,
                 template: action.key
             }
+
+        case actionType.changePersonalInfo:
+            return {
+                ...state,
+                personalDetails: {
+                    ...state.personalDetails,
+                    [action.identifier]: action.value
+                }
+            }
+
+        case actionType.changeEducationInfo:
+            return {
+                ...state,
+                educationDetails: {
+                    ...state.educationDetails,
+                    [action.identifier]: action.value
+                }
+            }
+
         default:
             return state;
     }

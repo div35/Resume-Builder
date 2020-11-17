@@ -5,11 +5,10 @@ import {connect} from "react-redux"
 
 class GettingStarted extends Component {
 
-    // onClickHandler = (key, event) => {
-    //     event.preventDefault();
-    //     console.log(key);
-    //     this.props.history.push("personalDetails");
-    // }
+    onClickHandler = (key) => {
+        // this.props.history.push("/");
+        this.props.proceedToPersonalDetails(key, this.props.history);
+    }
 
     render() {
         return (
@@ -21,19 +20,19 @@ class GettingStarted extends Component {
                     <div className={classes.templates}>
                         <div className={`${classes.temp1} ${classes.temp}`}>
                             <br /><br /><br />
-                            <button className={classes.btn} onClick = {() => this.props.selectTemplate(1)} >Use Template</button>
+                            <button className={classes.btn} onClick = {() => this.onClickHandler(1)} >Use Template</button>
                         </div>
                         <div className={`${classes.temp2} ${classes.temp}`}>
                             <br /><br /><br />
-                            <button className={classes.btn} onClick={() => this.props.selectTemplate(2)}>Use Template</button>
+                            <button className={classes.btn} onClick={() => this.onClickHandler(2)}>Use Template</button>
                         </div>
                         <div className={`${classes.temp3} ${classes.temp}`}>
                             <br /><br /><br />
-                            <button className={classes.btn} onClick={() => this.props.selectTemplate(3)}>Use Template</button>
+                            <button className={classes.btn} onClick={() => this.onClickHandler(3)}>Use Template</button>
                         </div>
                         <div className={`${classes.temp4} ${classes.temp}`}>
                             <br /><br /><br />
-                            <button className={classes.btn} onClick={() => this.props.selectTemplate(4)}>Use Template</button>
+                            <button className={classes.btn} onClick={() => this.onClickHandler(4)}>Use Template</button>
                         </div>
                     </div>
                 </div>
@@ -44,7 +43,7 @@ class GettingStarted extends Component {
 
 const mapDispatchToProps = dispatch => {
     return({
-        selectTemplate : (key) => dispatch(action.selectTemplate(key))
+        proceedToPersonalDetails : (key, history) => dispatch(action.proceedToPersonalDetails(key, history))
     })
 }
 
