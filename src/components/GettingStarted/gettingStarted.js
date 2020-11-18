@@ -18,7 +18,7 @@ class GettingStarted extends Component {
                     <p>You'll be able to edit and change this template later!</p>
                     <br />
                     <div className={classes.templates}>
-                        <div className={`${classes.temp1} ${classes.temp}`}>
+                        <div className={`${classes.temp1} ${classes.temp}`} >
                             <br /><br /><br />
                             <button className={classes.btn} onClick = {() => this.onClickHandler(1)} >Use Template</button>
                         </div>
@@ -28,11 +28,11 @@ class GettingStarted extends Component {
                         </div>
                         <div className={`${classes.temp3} ${classes.temp}`}>
                             <br /><br /><br />
-                            <button className={classes.btn} onClick={() => this.onClickHandler(3)}>Use Template</button>
+                            <button className={classes.btn} onClick={() => this.onClickHandler(3)} disabled>Use Template</button>
                         </div>
                         <div className={`${classes.temp4} ${classes.temp}`}>
                             <br /><br /><br />
-                            <button className={classes.btn} onClick={() => this.onClickHandler(4)}>Use Template</button>
+                            <button className={classes.btn} onClick={() => this.onClickHandler(4)} disabled>Use Template</button>
                         </div>
                     </div>
                 </div>

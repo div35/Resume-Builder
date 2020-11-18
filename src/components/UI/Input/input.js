@@ -5,6 +5,7 @@ const Input = (props) => {
 
     let inputElement = null;
     let req = props.required ? true : false;
+    let chk = props.checked ? true : false;
 
     switch (props.elementType) {
         case ('input'):
@@ -15,6 +16,7 @@ const Input = (props) => {
                 value={props.value}
                 onChange={props.changed}
                 required={req}
+                checked={chk}
                  />;
             break;
 
@@ -36,7 +38,7 @@ const Input = (props) => {
                 </select>
             );
             break;
-
+        
         default:
             inputElement = null
     }

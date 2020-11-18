@@ -48,8 +48,6 @@
     border-radius: 1rem;
 }
 
-.btn:hover{
-    color: rgb(38, 156, 101);
-    background-color: white;
-    font-size: 1rem;
+.btn:disabled{
+    background-color: brown;
 }

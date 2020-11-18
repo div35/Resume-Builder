@@ -1,0 +1,12 @@
+.Box {
+    margin: 1rem;
+    padding: 1rem;
+    box-shadow: 0 1px 5px;
+    min-height: calc(100vh - 2rem - 100px);
+    width: calc(100vw / 2);
+  }
+  
+  .Together {
+    display: flex;
+  }
+  

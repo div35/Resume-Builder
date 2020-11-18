@@ -8,6 +8,10 @@ import { Redirect, Route, Switch, withRouter } from "react-router-dom";
 import PageNotFound from "./components/PageNotFound/pageNotFound"
 import SignIn from "./components/SignIn/signInPage"
 import Register from "./components/Register/register"
+import Work from "./components/WorkExperienceSection/workExperience"
+import Training from "./components/TrainingSection/trainingSection"
+import Skills from "./components/SkillsSection/skillsSection"
+import Projects from "./components/ProjectsSection/projectSection"
 
 class App extends Component {
   render() {
@@ -15,10 +19,10 @@ class App extends Component {
       <div>
         <Layout>
           <Switch>
-            {/* <Route path="/skills" component={ Skills } />
+            <Route path="/skills" component={ Skills } />
             <Route path="/projects" component={ Projects } />
             <Route path="/workExp" component={ Work } />
-            <Route path="/trainings" component={ Training } /> */}
+            <Route path="/trainings" component={ Training } />
             <Route path="/register" component={Register} />
             <Route path="/signIn" component={SignIn} />
             <Route path="/gettingStarted" component={GettingStarted} />
