@@ -7,9 +7,6 @@ import * as actions from './../../../store/action/action';
 import {connect} from 'react-redux';
 
 class Form extends Component {
-  // state = {
-  //     feilds: 1
-  // }
 
   changeInputHandler = (id, event) => {
     this.props.changeInfo(event.target.value, id);
@@ -17,7 +14,7 @@ class Form extends Component {
 
   formSubmitHandler = (e) => {
     e.preventDefault();
-    this.props.history.push('/projects');
+    this.props.history.push('/workExp');
   };
 
   backHandler = () => {

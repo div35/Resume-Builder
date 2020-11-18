@@ -17,7 +17,7 @@ class Form extends Component {
   };
 
   backHandler = () => {
-    this.props.history.push('/workExp');
+    this.props.history.push('/projects');
   };
 
   checkboxHandler = (e) => {

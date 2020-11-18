@@ -47,6 +47,7 @@ const initialState = {
     position:"",
     description: '',
   },
+  
   trainingSection: {
     name:"",
     location:"",

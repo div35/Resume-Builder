@@ -13,11 +13,11 @@ class Form extends Component {
 
   formSubmitHandler = (e) => {
     e.preventDefault();
-    this.props.history.push('/workExp');
+    this.props.history.push('/trainings');
   };
 
   backHandler = () => {
-    this.props.history.push('/educationSection');
+    this.props.history.push('/workExp');
   };
 
   checkboxHandler = (e) => {
