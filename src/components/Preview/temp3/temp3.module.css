@@ -1,0 +1,60 @@
+* {
+  margin: 0rem;
+  font-family: 'merriweather';
+}
+
+.name {
+  font-size: 25px;
+  margin-bottom: 5px;
+}
+
+.temp3 {
+  margin: 1rem;
+  box-shadow: 0 1px 5px;
+  min-height: calc(100vh - 2rem);
+  width: calc(100vw / 2);
+  padding: 1rem;
+  padding-left: 2rem;
+  padding-right: 2rem;
+}
+
+.top {
+  display: flex;
+  margin: 5px;
+  padding: 4px;
+}
+
+.bottom {
+  display: flex;
+  margin: 5px;
+  padding: 4px;
+}
+
+.left {
+  width: calc(100vw / 4 - 1rem);
+}
+
+.right {
+  width: calc(100vw / 4 - 3rem);
+  /* margin-right: 1rem; */
+}
+
+.mob,
+.email {
+  display: flex;
+  font-family: 'Open Sans';
+}
+
+.heading1 {
+  font-size: 10px;
+  color: black;
+  font-weight: bold;
+  font-family: 'Open Sans';
+}
+
+.para1 {
+  font-size: 10px;
+  color: rgb(3, 124, 180);
+  margin-left: 2px;
+  font-family: 'Open Sans';
+}

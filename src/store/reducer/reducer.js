@@ -1,7 +1,6 @@
 import * as actionType from './../action/actionTypes';
 
 const initialState = {
-  template: '',
   personalDetails: {
     firstName: '',
     lastName: '',
@@ -59,7 +58,13 @@ const initialState = {
     instituteName:"",
     description: '',
   },
-  skillSection: [],
+  skillSection: {
+    name: []
+  },
+  template: '',
+  fontFamily: '',
+  color: '',
+  fontSize: ''
 };
 
 const reducer = (state = initialState, action) => {
