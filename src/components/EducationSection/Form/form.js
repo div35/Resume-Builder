@@ -7,7 +7,6 @@ import * as actions from './../../../store/action/action';
 import {connect} from 'react-redux';
 
 class Form extends Component {
-
   changeInputHandler = (id, event) => {
     this.props.changeInfo(event.target.value, id);
   };
@@ -19,6 +18,14 @@ class Form extends Component {
 
   backHandler = () => {
     this.props.history.push('/personalDetails');
+  };
+
+  checkboxHandler = (e) => {
+    if (e.target.checked === false) {
+      this.props.changeInfo('Done', 'ongoing');
+    } else {
+      this.props.changeInfo('Present', 'ongoing');
+    }
   };
 
   // addEducationHandler = () => {
@@ -40,6 +47,33 @@ class Form extends Component {
   // }
 
   render() {
+    let temp = null;
+    if (this.props.ongoing === 'Done') {
+      temp = (
+        <div className={classes.Together}>
+          <Input
+            elementType="input"
+            label="Ending Month"
+            type="text"
+            placeholder="Ending Month"
+            required="true"
+            value={this.props.e_month}
+            changed={this.changeInputHandler.bind('this', 'e_month')}
+          />
+          <Input
+            elementType="input"
+            label="Ending Year"
+            type="text"
+            placeholder="Ending Year"
+            required="true"
+            value={this.props.e_year}
+            changed={this.changeInputHandler.bind('this', 'e_year')}
+          />
+        </div>
+      );
+    } else {
+      temp = null;
+    }
     let form = (
       <form onSubmit={this.formSubmitHandler}>
         <div className={classes.Together}>
@@ -82,6 +116,13 @@ class Form extends Component {
             changed={this.changeInputHandler.bind('this', 'collegeCity')}
           ></Input>
         </div>
+        <Input
+            elementType="input"
+            type="checkbox"
+            label="Project is ongoing"
+            changed={this.checkboxHandler}
+            checked={this.props.ongoing === 'Done' ? false : true}
+          />
         <div className={classes.Together}>
           <Input
             elementType="input"
@@ -89,8 +130,8 @@ class Form extends Component {
             type="text"
             placeholder="Starting Month"
             required="true"
-            value={this.props.month}
-            changed={this.changeInputHandler.bind('this', 'month')}
+            value={this.props.s_month}
+            changed={this.changeInputHandler.bind('this', 's_month')}
           ></Input>
           <Input
             elementType="input"
@@ -98,10 +139,11 @@ class Form extends Component {
             type="text"
             placeholder="Starting Year"
             required="true"
-            value={this.props.year}
-            changed={this.changeInputHandler.bind('this', 'year')}
+            value={this.props.s_year}
+            changed={this.changeInputHandler.bind('this', 's_year')}
           ></Input>
         </div>
+        {temp}
         <br />
         <br />
         <br />
@@ -150,8 +192,11 @@ const mapStateToProps = (state) => {
     degree: state.educationDetails.degree,
     cgpa: state.educationDetails.cgpa,
     collegeCity: state.educationDetails.collegeCity,
-    month: state.educationDetails.month,
-    year: state.educationDetails.year,
+    s_month: state.educationDetails.s_month,
+    s_year: state.educationDetails.s_year,
+    e_month: state.educationDetails.e_month,
+    e_year: state.educationDetails.e_year,
+    ongoing: state.educationDetails.ongoing,
   };
 };
 

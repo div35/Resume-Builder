@@ -13,6 +13,7 @@ const initialState = {
     state: '',
     country: '',
     pinCode: '',
+    v:false
   },
 
   educationDetails: {
@@ -20,8 +21,12 @@ const initialState = {
     degree: '',
     cgpa: '',
     collegeCity: '',
-    month: '',
-    year: '',
+    s_month: '',
+    s_year: '',
+    e_month: '',
+    e_year: '',
+    ongoing:'Done',
+    v:false
   },
 
   projectSection: {
@@ -33,6 +38,7 @@ const initialState = {
     ongoing: 'Done',
     description: '',
     link: '',
+    v:false
   },
 
   workSection: {
@@ -45,6 +51,7 @@ const initialState = {
     ongoing: 'Done',
     position:"",
     description: '',
+    v:false
   },
   
   trainingSection: {
@@ -57,10 +64,13 @@ const initialState = {
     ongoing: 'Done',
     instituteName:"",
     description: '',
+    v:false
   },
   skillSection: {
-    name: []
+    name: [],
+    v:false
   },
+  ID:'',
   template: '',
   fontFamily: '',
   color: '',
@@ -73,6 +83,7 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         template: action.key,
+        ID: action.ID
       };
 
     case actionType.changePersonalInfo:

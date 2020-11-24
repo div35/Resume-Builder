@@ -20,7 +20,10 @@ class Form extends Component {
         this.props.history.push('/gettingStarted');
     }
 
+    
+
     render() {
+       
         return (
             <div className={`${classes.Box}`}>
                 <h2 style={{ marginTop: "0rem", textAlign: "center", fontSize: "1.8rem" }}>Personal Details</h2>
@@ -35,7 +38,7 @@ class Form extends Component {
                         <Input elementType="input" label="Phone Number" type="text" placeholder="Your Phone Number" required="true" value={this.props.phone} changed={this.changeInputHandler.bind("this", "phone")}></Input>
                     </div>
                     <div className={classes.Together}>
-                        <Input elementType="input" label="Profession" type="text" placeholder="Your Profession" required="true" value={this.props.profession} changed={this.changeInputHandler.bind("this", "profession")}></Input>
+                        <Input elementType="input" label="Profession" type="text" placeholder="Your Profession" value={this.props.profession} changed={this.changeInputHandler.bind("this", "profession")}></Input>
                         <Input elementType="input" label="Address" type="text" placeholder="Your Address" required="true" value={this.props.address} changed={this.changeInputHandler.bind("this", "address")}></Input>
                     </div>
                     <div className={classes.Together}>
@@ -68,13 +71,14 @@ const mapStateToProps = state => {
         city: state.personalDetails.city,
         state: state.personalDetails.state,
         country: state.personalDetails.country,
-        pinCode: state.personalDetails.pinCode
+        pinCode: state.personalDetails.pinCode,
+        v: state.personalDetails.v
     })
 }
 
 const mapDispatchToProps = dispatch => {
     return({
-        changeInfo : (value, identifier) => dispatch(actions.changePersonalInfo(value, identifier))
+        changeInfo : (value, identifier) => dispatch(actions.changePersonalInfo(value, identifier)),
     })
 }
 

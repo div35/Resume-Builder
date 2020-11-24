@@ -7,10 +7,17 @@ import {Provider} from 'react-redux';
 import {createStore, applyMiddleware, compose, combineReducers} from 'redux';
 import thunk from 'redux-thunk';
 import Reducer from './store/reducer/reducer';
+import firebase from 'firebase/app';
+import 'firebase/firestore';
+import 'firebase/auth';
+import {reduxFirestore, getFirestore} from 'redux-firestore';
+import {reactReduxFirebase, getFirebase} from 'react-redux-firebase';
+import {ReactReduxFirebaseProvider} from 'react-redux-firebase';
+import {createFirestoreInstance} from 'redux-firestore';
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
-const fbConfig = {
+var firebaseConfig = {
   apiKey: 'AIzaSyDW1fsYusedmDKylTYC0fYl2TBsdvp9djQ',
   authDomain: 'resume-builder-ad695.firebaseapp.com',
   databaseURL: 'https://resume-builder-ad695.firebaseio.com',
@@ -21,15 +28,30 @@ const fbConfig = {
   measurementId: 'G-8NLWLMVEKV',
 };
 
+// Initialize Firebase
+firebase.initializeApp(firebaseConfig);
 
-let store = createStore(Reducer, composeEnhancers(applyMiddleware(thunk)));
+const store = createStore(
+  Reducer,
+  composeEnhancers(
+    applyMiddleware(thunk.withExtraArgument({getFirebase, getFirestore})),
+    reduxFirestore(firebase) // redux bindings for firestore,
+  )
+);
 
 ReactDOM.render(
   <Provider store={store}>
     <BrowserRouter>
-      <React.StrictMode>
-        <App />
-      </React.StrictMode>
+      <ReactReduxFirebaseProvider
+        firebase={firebase}
+        config={firebaseConfig}
+        dispatch={store.dispatch}
+        createFirestoreInstance={createFirestoreInstance}
+      >
+        <React.StrictMode>
+          <App />
+        </React.StrictMode>
+      </ReactReduxFirebaseProvider>
     </BrowserRouter>
   </Provider>,
   document.getElementById('root')
