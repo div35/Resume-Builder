@@ -13,7 +13,7 @@ const initialState = {
     state: '',
     country: '',
     pinCode: '',
-    v:false
+    id: '',
   },
 
   educationDetails: {
@@ -25,8 +25,8 @@ const initialState = {
     s_year: '',
     e_month: '',
     e_year: '',
-    ongoing:'Done',
-    v:false
+    ongoing: 'Done',
+    id: '',
   },
 
   projectSection: {
@@ -38,52 +38,61 @@ const initialState = {
     ongoing: 'Done',
     description: '',
     link: '',
-    v:false
+    id: '',
   },
 
   workSection: {
-    name:"",
-    location:"",
+    name: '',
+    location: '',
     s_month: '',
     s_year: '',
     e_month: '',
     e_year: '',
     ongoing: 'Done',
-    position:"",
+    position: '',
     description: '',
-    v:false
+    id: '',
   },
-  
+
   trainingSection: {
-    name:"",
-    location:"",
+    name: '',
+    location: '',
     s_month: '',
     s_year: '',
     e_month: '',
     e_year: '',
     ongoing: 'Done',
-    instituteName:"",
+    instituteName: '',
     description: '',
-    v:false
+    id: '',
   },
   skillSection: {
     name: [],
-    v:false
+    id: '',
   },
-  ID:'',
+  ID: '',
+  userID: '',
+  Autherror: '',
+  error: '',
   template: '',
   fontFamily: '',
   color: '',
-  fontSize: ''
+  fontSize: '',
 };
 
 const reducer = (state = initialState, action) => {
   switch (action.type) {
-    case actionType.selectTemplate:
+    case actionType.selectTemplateSuccess:
       return {
         ...state,
         template: action.key,
-        ID: action.ID
+        ID: action.ID,
+      };
+
+    case actionType.selectTemplateFailure:
+      return {
+        ...state,
+        error: action.error,
       };
 
     case actionType.changePersonalInfo:
@@ -133,7 +142,25 @@ const reducer = (state = initialState, action) => {
 
     case actionType.changeSkillInfo:
       return {
-        ...state
+        ...state,
+      };
+
+    case actionType.registerSuccess:
+      return {
+        ...state,
+        userID: action.uid,
+      };
+
+    case actionType.registerFailure:
+      return {
+        ...state,
+        Autherror: action.error,
+      };
+
+    case actionType.databaseUpdateFailure:
+      return {
+        ...state,
+        error: action.error,
       };
 
     default:

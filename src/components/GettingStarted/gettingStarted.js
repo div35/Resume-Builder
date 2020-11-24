@@ -5,14 +5,27 @@ import {connect} from 'react-redux';
 
 class GettingStarted extends Component {
   onClickHandler = (key) => {
-    if (this.props.ID !== '') {
-      this.props.proceedToPersonalDetails_UPDATE(key, this.props.history, this.props.ID);
-    } else {
-      this.props.proceedToPersonalDetails_ADD(key, this.props.history);
+    if(this.props.userID === ""){
+     this.props.history.push("/signIn") 
     }
+    else{
+      if (this.props.ID !== '') {
+        this.props.proceedToPersonalDetails_UPDATE(key, this.props.history, this.props.ID);
+      } else {
+        this.props.proceedToPersonalDetails_ADD(key, this.props.history, this.props.userID);
+      }
+    }
+    
   };
 
   render() {
+    let text = null;
+    if(this.props.userID === ''){
+      text = "Sign In"
+    }
+    else{
+      text = "USE TEMPLATE"
+    }
     return (
       <div>
         <div className={classes.home}>
@@ -28,7 +41,7 @@ class GettingStarted extends Component {
                 className={classes.btn}
                 onClick={() => this.onClickHandler(1)}
               >
-                Use Template
+                {text}
               </button>
             </div>
             <div className={`${classes.temp2} ${classes.temp}`}>
@@ -39,7 +52,7 @@ class GettingStarted extends Component {
                 className={classes.btn}
                 onClick={() => this.onClickHandler(2)}
               >
-                Use Template
+                {text}
               </button>
             </div>
             <div className={`${classes.temp3} ${classes.temp}`}>
@@ -51,7 +64,7 @@ class GettingStarted extends Component {
                 onClick={() => this.onClickHandler(3)}
                 disabled
               >
-                Use Template
+                {text}
               </button>
             </div>
             <div className={`${classes.temp4} ${classes.temp}`}>
@@ -63,7 +76,7 @@ class GettingStarted extends Component {
                 onClick={() => this.onClickHandler(4)}
                 disabled
               >
-                Use Template
+               {text}
               </button>
             </div>
           </div>
@@ -75,14 +88,15 @@ class GettingStarted extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    ID: state.ID
+    ID: state.ID, 
+    userID: state.userID
   };
 };
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    proceedToPersonalDetails_ADD: (key, history) =>
-      dispatch(action.proceedToPersonalDetails_ADD(key, history)),
+    proceedToPersonalDetails_ADD: (key, history, userID) =>
+      dispatch(action.proceedToPersonalDetails_ADD(key, history, userID)),
       proceedToPersonalDetails_UPDATE: (key, history, ID) =>
       dispatch(action.proceedToPersonalDetails_UPDATE(key, history, ID))
   };

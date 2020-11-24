@@ -13,7 +13,27 @@ class Form extends Component {
 
   formSubmitHandler = (e) => {
     e.preventDefault();
-    this.props.history.push('/trainings');
+    let data = {
+      name: this.props.name,
+      s_month: this.props.s_month,
+      s_year: this.props.s_year,
+      e_month: this.props.e_month,
+      e_year: this.props.e_year,
+      ongoing: this.props.ongoing,
+      description: this.props.description,
+      link: this.props.link,
+    };
+
+    if (this.props.id === '') {
+      this.props.ADD_INFO(data, this.props.history, this.props.userID);
+    } else {
+      this.props.UPDATE_INFO(
+        data,
+        this.props.history,
+        this.props.id,
+        this.props.userID
+      );
+    }
   };
 
   backHandler = () => {
@@ -59,23 +79,23 @@ class Form extends Component {
 
     let form = (
       <form onSubmit={this.formSubmitHandler}>
-          <div className={classes.Together}>
-        <Input
-          elementType="input"
-          label="Project Name"
-          type="text"
-          placeholder="Project Name"
-          required="true"
-          value={this.props.name}
-          changed={this.changeInputHandler.bind('this', 'name')}
-        />
-        <Input
-          elementType="input"
-          type="checkbox"
-          label="Project is ongoing"
-          changed={this.checkboxHandler}
-          checked={this.props.ongoing === 'Done' ? false : true}
-        />
+        <div className={classes.Together}>
+          <Input
+            elementType="input"
+            label="Project Name"
+            type="text"
+            placeholder="Project Name"
+            required="true"
+            value={this.props.name}
+            changed={this.changeInputHandler.bind('this', 'name')}
+          />
+          <Input
+            elementType="input"
+            type="checkbox"
+            label="Project is ongoing"
+            changed={this.checkboxHandler}
+            checked={this.props.ongoing === 'Done' ? false : true}
+          />
         </div>
 
         <div className={classes.Together}>
@@ -164,6 +184,8 @@ const mapStateToProps = (state) => {
     ongoing: state.projectSection.ongoing,
     description: state.projectSection.description,
     link: state.projectSection.link,
+    id: state.projectSection.id,
+    userID: state.userID,
   };
 };
 
@@ -171,6 +193,10 @@ const mapDispatchToProps = (dispatch) => {
   return {
     changeInfo: (value, identifier) =>
       dispatch(actions.changeProjectInfo(value, identifier)),
+    ADD_INFO: (data, history, userID) =>
+      dispatch(actions.ProjectInfo_ADD(data, history, userID)),
+    UPDATE_INFO: (data, history, id, userID) =>
+      dispatch(actions.ProjectInfo_UPDATE(data, history, id, userID)),
   };
 };
 

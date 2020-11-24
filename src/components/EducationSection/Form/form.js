@@ -13,7 +13,28 @@ class Form extends Component {
 
   formSubmitHandler = (e) => {
     e.preventDefault();
-    this.props.history.push('/workExp');
+    let data = {
+      college: this.props.college,
+      degree: this.props.degree,
+      cgpa: this.props.cgpa,
+      collegeCity: this.props.collegeCity,
+      s_month: this.props.s_month,
+      s_year: this.props.s_year,
+      e_month: this.props.e_month,
+      e_year: this.props.e_year,
+      ongoing: this.props.ongoing,
+    };
+
+    if (this.props.id === '') {
+      this.props.ADD_INFO(data, this.props.history, this.props.userID);
+    } else {
+      this.props.UPDATE_INFO(
+        data,
+        this.props.history,
+        this.props.id,
+        this.props.userID
+      );
+    }
   };
 
   backHandler = () => {
@@ -117,12 +138,12 @@ class Form extends Component {
           ></Input>
         </div>
         <Input
-            elementType="input"
-            type="checkbox"
-            label="Project is ongoing"
-            changed={this.checkboxHandler}
-            checked={this.props.ongoing === 'Done' ? false : true}
-          />
+          elementType="input"
+          type="checkbox"
+          label="Ongoing"
+          changed={this.checkboxHandler}
+          checked={this.props.ongoing === 'Done' ? false : true}
+        />
         <div className={classes.Together}>
           <Input
             elementType="input"
@@ -197,6 +218,8 @@ const mapStateToProps = (state) => {
     e_month: state.educationDetails.e_month,
     e_year: state.educationDetails.e_year,
     ongoing: state.educationDetails.ongoing,
+    id: state.educationDetails.id,
+    userID: state.userID,
   };
 };
 
@@ -204,6 +227,10 @@ const mapDispatchToProps = (dispatch) => {
   return {
     changeInfo: (value, identifier) =>
       dispatch(actions.changeEducationInfo(value, identifier)),
+    ADD_INFO: (data, history, userID) =>
+      dispatch(actions.EducationInfo_ADD(data, history, userID)),
+    UPDATE_INFO: (data, history, id, userID) =>
+      dispatch(actions.EducationInfo_UPDATE(data, history, id, userID)),
   };
 };
 

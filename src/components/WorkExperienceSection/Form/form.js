@@ -13,7 +13,27 @@ class Form extends Component {
 
   formSubmitHandler = (e) => {
     e.preventDefault();
-    this.props.history.push('/projects');
+    let data = {
+      name: this.props.name,
+      location: this.props.location,
+      s_month: this.props.s_month,
+      s_year: this.props.s_year,
+      e_month: this.props.e_month,
+      e_year: this.props.e_year,
+      ongoing: this.props.ongoing,
+      description: this.props.description,
+      position: this.props.position,
+    }
+    if (this.props.id === '') {
+      this.props.ADD_INFO(data, this.props.history, this.props.userID);
+    } else {
+      this.props.UPDATE_INFO(
+        data,
+        this.props.history,
+        this.props.id,
+        this.props.userID
+      );
+    }
   };
 
   backHandler = () => {
@@ -176,6 +196,8 @@ const mapStateToProps = (state) => {
     ongoing: state.workSection.ongoing,
     description: state.workSection.description,
     position: state.workSection.position,
+    id: state.workSection.id,
+    userID: state.userID,
   };
 };
 
@@ -183,6 +205,10 @@ const mapDispatchToProps = (dispatch) => {
   return {
     changeInfo: (value, identifier) =>
       dispatch(actions.changeWorkInfo(value, identifier)),
+      ADD_INFO: (data, history, userID) =>
+      dispatch(actions.WorkInfo_ADD(data, history, userID)),
+    UPDATE_INFO: (data, history, id, userID) =>
+      dispatch(actions.WorkInfo_UPDATE(data, history, id, userID)),
   };
 };
 

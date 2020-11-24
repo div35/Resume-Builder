@@ -13,7 +13,28 @@ class Form extends Component {
 
   formSubmitHandler = (e) => {
     e.preventDefault();
-    this.props.history.push('/skills');
+    let data = {
+      name: this.props.name,
+    location: this.props.location,
+    s_month: this.props.s_month,
+    s_year: this.props.s_year,
+    e_month: this.props.e_month,
+    e_year: this.props.e_year,
+    ongoing: this.props.ongoing,
+    description: this.props.description,
+    instituteName: this.props.instituteName,
+    }
+
+    if (this.props.id === '') {
+      this.props.ADD_INFO(data, this.props.history, this.props.userID);
+    } else {
+      this.props.UPDATE_INFO(
+        data,
+        this.props.history,
+        this.props.id,
+        this.props.userID
+      );
+    }
   };
 
   backHandler = () => {
@@ -62,7 +83,7 @@ class Form extends Component {
         <div className={classes.Together}>
           <Input
             elementType="input"
-            label="Company Name"
+            label="Course Name"
             type="text"
             placeholder="Project Name"
             required="true"
@@ -176,6 +197,8 @@ const mapStateToProps = (state) => {
     ongoing: state.trainingSection.ongoing,
     description: state.trainingSection.description,
     instituteName: state.trainingSection.instituteName,
+    id: state.trainingSection.id,
+    userID: state.userID,
   };
 };
 
@@ -183,6 +206,10 @@ const mapDispatchToProps = (dispatch) => {
   return {
     changeInfo: (value, identifier) =>
       dispatch(actions.changeTrainingInfo(value, identifier)),
+      ADD_INFO: (data, history, userID) =>
+      dispatch(actions.TrainingInfo_ADD(data, history, userID)),
+    UPDATE_INFO: (data, history, id, userID) =>
+      dispatch(actions.TrainingInfo_UPDATE(data, history, id, userID)),
   };
 };
 
