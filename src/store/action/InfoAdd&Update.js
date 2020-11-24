@@ -23,14 +23,11 @@ export const proceedToPersonalDetails_ADD = (key, history, userID) => {
       // console.log(userID);
       let fireStore = getFirestore();
       let id = userID;
-      let doc = {
-        id: id,
-        templateID: key,
-      };
       fireStore
         .collection('resume-data')
         .doc(id)
-        .set({document: doc}, {merge: true});
+        .set({ID: id,
+          template: key,}, {merge: true});
       await dispatch(selectTemplateSuccess(key, id));
       history.push('/personalDetails');
     } catch (err) {
@@ -43,14 +40,11 @@ export const proceedToPersonalDetails_UPDATE = (key, history, id) => {
   return async (dispatch, getSate, {getFirebase, getFireStore}) => {
     try {
       let fireStore = getFirestore();
-      let doc = {
-        id: id,
-        templateID: key,
-      };
       fireStore
         .collection('resume-data')
         .doc(id)
-        .set({document: doc}, {merge: true});
+        .set({ID: id,
+          template: key,}, {merge: true});
       await dispatch(selectTemplateSuccess(key, id));
       history.push('/personalDetails');
     } catch (err) {

@@ -54,13 +54,12 @@ export const register = (email, password, isRegister) => {
               .then(function (data) {
                 // console.log(data.docs[0].data());
                 tempState = data.docs.filter((d) => {
-                  return d.data() && d.data().document && d.data().document.id && d.data().document.id === user.uid;
+                  return d.data() && d.data().ID && d.data().ID === user.uid;
                 });
                 if (tempState && tempState.length > 0) {
                   dispatch(loadData(tempState[0].data()));
                 }
-              })
-            
+              });
           })
           .catch((error) => {
             var errorCode = error.code;
@@ -89,16 +88,13 @@ export const checkAuthStatus = () => {
             .then(function (data) {
               // console.log(data.docs[0].data());
               tempState = data.docs.filter((d) => {
-                return d.data() && d.data().document && d.data().document.id && d.data().document.id === user.uid;
+                return d.data() && d.data().ID && d.data().ID === user.uid;
               });
-              
+              console.log(tempState);
               if (tempState && tempState.length > 0) {
                 dispatch(loadData(tempState[0].data()));
               }
-            })
-        }
-        else{
-
+            });
         }
       });
     } catch (error) {
