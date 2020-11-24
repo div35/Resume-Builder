@@ -163,8 +163,13 @@ const reducer = (state = initialState, action) => {
         error: action.error,
       };
 
+    case actionType.loadData:
+      return {
+        ...state,
+      };
+
     default:
-      return state;
+      return state
   }
 };
 
