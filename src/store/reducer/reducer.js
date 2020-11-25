@@ -166,7 +166,7 @@ const reducer = (state = initialState, action) => {
     case actionType.loadData:
       return {
         ...state,
-        ...[action.data]
+        ...action.data
       };
 
     default:

@@ -81,7 +81,7 @@ export const PersonalInfo_ADD = (data, history, userID) => {
       fireStore
         .collection('resume-data')
         .doc(userID)
-        .set({personalINFO: doc}, {merge: true});
+        .set({personalDetails: doc}, {merge: true});
       await dispatch(changePersonalInfo(id, 'id'));
       history.push('/educationSection');
     } catch (err) {
@@ -101,7 +101,7 @@ export const PersonalInfo_UPDATE = (data, history, id, userID) => {
       fireStore
         .collection('resume-data')
         .doc(userID)
-        .set({personalINFO: doc}, {merge: true});
+        .set({personalDetails: doc}, {merge: true});
       await dispatch(changePersonalInfo(id, 'id'));
       history.push('/educationSection');
     } catch (err) {
@@ -130,7 +130,7 @@ export const EducationInfo_ADD = (data, history, userID) => {
       fireStore
         .collection('resume-data')
         .doc(userID)
-        .set({educationalINFO: doc}, {merge: true});
+        .set({educationDetails: doc}, {merge: true});
       await dispatch(changeEducationInfo(id, 'id'));
       history.push('/workExp');
     } catch (err) {
@@ -150,7 +150,7 @@ export const EducationInfo_UPDATE = (data, history, id, userID) => {
       fireStore
         .collection('resume-data')
         .doc(userID)
-        .set({educationalINFO: doc}, {merge: true});
+        .set({educationDetails: doc}, {merge: true});
       await dispatch(changeEducationInfo(id, 'id'));
       history.push('/workExp');
     } catch (err) {
@@ -179,7 +179,7 @@ export const WorkInfo_ADD = (data, history, userID) => {
       fireStore
         .collection('resume-data')
         .doc(userID)
-        .set({workINFO: doc}, {merge: true});
+        .set({workSection: doc}, {merge: true});
       await dispatch(changeWorkInfo(id, 'id'));
       history.push('/projects');
     } catch (err) {
@@ -199,7 +199,7 @@ export const WorkInfo_UPDATE = (data, history, id, userID) => {
       fireStore
         .collection('resume-data')
         .doc(userID)
-        .set({workINFO: doc}, {merge: true});
+        .set({workSection: doc}, {merge: true});
       await dispatch(changeWorkInfo(id, 'id'));
       history.push('/projects');
     } catch (err) {
@@ -228,7 +228,7 @@ export const ProjectInfo_ADD = (data, history, userID) => {
       fireStore
         .collection('resume-data')
         .doc(userID)
-        .set({projectINFO: doc}, {merge: true});
+        .set({projectSection: doc}, {merge: true});
       await dispatch(changeProjectInfo(id, 'id'));
       history.push('/trainings');
     } catch (err) {
@@ -248,7 +248,7 @@ export const ProjectInfo_UPDATE = (data, history, id, userID) => {
       fireStore
         .collection('resume-data')
         .doc(userID)
-        .set({projectINFO: doc}, {merge: true});
+        .set({projectSection: doc}, {merge: true});
       await dispatch(changeProjectInfo(id, 'id'));
       history.push('/trainings');
     } catch (err) {
@@ -277,7 +277,7 @@ export const TrainingInfo_ADD = (data, history, userID) => {
       fireStore
         .collection('resume-data')
         .doc(userID)
-        .set({trainingINFO: doc}, {merge: true});
+        .set({trainingSection: doc}, {merge: true});
       await dispatch(changeTrainingInfo(id, 'id'));
       history.push('/skills');
     } catch (err) {
@@ -297,7 +297,7 @@ export const TrainingInfo_UPDATE = (data, history, id, userID) => {
       fireStore
         .collection('resume-data')
         .doc(userID)
-        .set({trainingINFO: doc}, {merge: true});
+        .set({trainingSection: doc}, {merge: true});
       await dispatch(changeTrainingInfo(id, 'id'));
       history.push('/skills');
     } catch (err) {
